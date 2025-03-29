@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -11,79 +11,76 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
-    transition: background-color 0.5s, color 0.5s;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    transition: all 0.5s ease;
 }
 
 body.dark {
-    background-color: #222;
-    color: #fff;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: #ecf0f1;
 }
 
 .clock-container {
     text-align: center;
-    padding: 2rem;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.clock-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    pointer-events: none;
 }
 
 .clock {
     font-size: 5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+    font-weight: 700;
     margin-bottom: 1rem;
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 3px;
+}
+
+body.dark .clock {
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .date {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    opacity: 0.8;
+    opacity: 0.9;
+    color: #34495e;
+    font-weight: 500;
 }
 
-.controls {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    transition: transform 0.2s, background-color 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background-color: #0056b3;
+body.dark .date {
+    color: #bdc3c7;
 }
 
 .greeting {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    opacity: 0.8;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #e67e22;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-select {
-    padding: 0.8rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-body.dark select {
-    background-color: #333;
-    color: white;
-    border-color: #666;
+body.dark .greeting {
+    color: #f1c40f;
 }
 
 .controls {
@@ -94,8 +91,91 @@ body.dark select {
     justify-content: center;
 }
 
+button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: rotate(45deg);
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, #2980b9, #3498db);
+}
+
+button:hover::after {
+    animation: buttonShine 1.5s;
+}
+
+select {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 2px solid #3498db;
+    background: rgba(255,255,255,0.9);
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(52,152,219,0.5);
+}
+
+body.dark select {
+    background: rgba(0,0,0,0.3);
+    color: #ecf0f1;
+    border-color: #2980b9;
+}
+
+select:hover {
+    box-shadow: 0 0 10px rgba(52,152,219,0.5);
+}
+
+@keyframes buttonShine {
+    0% { transform: rotate(45deg) translate(-50%, -50%); }
+    100% { transform: rotate(45deg) translate(150%, 150%); }
+}
+
 @media (max-width: 768px) {
     .clock {
-        font-size: 3rem;
+        font-size: 3.5rem;
+    }
+    
+    .clock-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    button {
+        padding: 0.8rem 1.2rem;
     }
 }
