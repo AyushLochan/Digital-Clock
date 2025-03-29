@@ -9,15 +9,22 @@
 </head>
 
 <body>
-
     <div class="clock-container">
+       <div class="greeting" id="greeting"></div>
        <div class="date" id="date"></div>
        <div class="clock" id="clock"></div>
        <div class="controls">
+            <select id="timezone">
+                <option value="local">Local Time</option>
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">New York</option>
+                <option value="Europe/London">London</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+            </select>
             <button id="toggleFormat">Switch Format</button>
+            <button id="toggleSeconds">Toggle Seconds</button>
             <button id="toggleTheme">Toggle Theme</button>
        </div>
-       
     </div>
 
     <script src="script.js"></script>
