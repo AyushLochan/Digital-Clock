@@ -41,8 +41,6 @@ cd Digital-Clock
 open index.html
 ```
 
-Or simply double-click the file in your file explorer.
-
 ---
 
 ## 🛠️ Built With
