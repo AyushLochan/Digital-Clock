@@ -34,13 +34,6 @@ You can view the project directly through the live link above. To run it locally
 git clone https://github.com/ayushlochan/Digital-Clock.git
 cd Digital-Clock
 ```
-
-### Open `index.html` in your browser:
-
-```bash
-open index.html
-```
-
 ---
 
 ## 🛠️ Built With
